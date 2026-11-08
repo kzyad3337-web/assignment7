@@ -52,3 +52,32 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascading_variables/Usin
 ## 4. What I Learned
 
 This research helped me understand how URL parameters, persistent browser storage, Zustand subscriptions, and CSS classes can work together in a React application. I also learned that choosing the correct place for state makes an application easier to maintain and understand.
+
+# Project File Organization
+
+The project is organized into separate folders to keep the application modular, readable, and maintainable.
+
+- `src/api/`: Contains API functions for fetching products and handling login.
+- `src/hooks/`: Contains reusable custom hooks, including `useFetch` and `useLocalStorage`.
+- `src/context/`: Contains `AuthContext` for managing authentication state.
+- `src/store/`: Contains the Zustand cart store and cart actions.
+- `src/components/`: Contains reusable UI components such as `Layout`, `NavBar`, `ProductCard`, and `ProtectedRoute`.
+- `src/pages/`: Contains application pages such as Home, ProductList, ProductDetail, Cart, Login, and NotFound.
+- `src/App.jsx`: Defines the application routes.
+- `src/main.jsx`: Initializes React, BrowserRouter, and AuthProvider.
+- `src/index.css` and `src/App.css`: Contain the application's global and component styling.
+- `public/`: Contains static assets.
+- `package.json`: Defines project dependencies and scripts.
+- `README.md`: Documents the project structure, technical decisions, research, and challenges.
+
+
+
+# Challenges Faced
+
+During development, I faced several challenges:
+
+1. **API Request Handling:** Managing loading and error states while fetching products. I addressed this by creating a reusable `useFetch` custom hook with request cancellation.
+2. **Cart Persistence:** Making sure cart items remain available after refreshing the page. I used Zustand with localStorage initialization and a store subscription to persist changes.
+3. **URL-Based Filtering:** Updating search and category filters without losing existing query parameters. I solved this using `useSearchParams` and `URLSearchParams`.
+4. **Authentication and Protected Routes:** Managing login state across components and preventing unauthenticated users from accessing the cart page. I implemented `AuthContext`, `useReducer`, and `ProtectedRoute`.
+5. **Theme Persistence:** Keeping the selected theme after a page reload. I used `useLocalStorage` and theme classes in the application layout.
